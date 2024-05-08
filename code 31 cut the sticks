@@ -1,0 +1,51 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'cutTheSticks' function below.
+#
+# The function is expected to return an INTEGER_ARRAY.
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def cutTheSticks(arr):
+    out=[]
+    x=0
+    y=0
+    for i in range(len(arr)):
+        if len(arr)==0:
+            break
+        out.append(len(arr))
+        print(i, " loop")
+        print(arr,"first array")
+        x = min(arr)
+        print( " min", x)
+        for i in range(len(arr)):
+            arr[i]= arr[i]-x
+        
+        arr= [i for i in arr if i > 0]
+        print(arr, " after removing short leftout sticks")
+                
+    #print(out)
+    return(out)  
+    
+    # Write your code here
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = cutTheSticks(arr)
+
+    fptr.write('\n'.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
